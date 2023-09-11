@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://127.0.0.1:5500/fontawesome-free-6.2.1-web/css/all.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5500/style1.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="">
+            <h1>Sign up</h1>
+
+            <div class="input-box"> 
+               
+                <input type="text" name="" id="user" placeholder="User" required>
+                <i class="fa-solid fa-user user icon "></i>
+            </div>
+
+            <div class="input-box"> 
+               
+                <input type="text" name="" id="flname" placeholder="first and last name" required>
+                <i class="fa-solid fa-user user icon "></i>
+            </div>
+
+            <div class="input-box"> 
+                <input type="email" name="" id="email"  placeholder="Email" required>
+                <i class="fa-solid fa-envelope"></i>
+            </div class=btn-box>
+
+            <div class="input-box"> 
+                <input type="password" name="" id="password" placeholder="Password" required>
+                <span class="lock-icon">
+                <i class="fa-solid fa-lock lock" id="icon"></i>
+               
+            </span>
+                
+            </div>  
+            
+            <div class="input-box"> 
+                <input type="password" name="" id="password2" placeholder="Confirm password" required >
+                <span class="lock-icon">
+                <i class="fa-solid fa-lock lock" id="icon1"></i>
+                
+            </span>
+                
+            </div>
+            <div class="input-box"> 
+                <input type="tel" name="" id="phone" placeholder="Phone"  required maxlength="10" >
+                <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="input-box"> 
+                <input type="text" name="" id="adress" placeholder="adress" required>
+                <i class="fa-solid fa-map-location"></i>
+            </div>
+              <button class="btn" type="submit" id="btn-signup">Sign up</button>
+          
+        </form>
+    </div>
+    <script>
+    var btn = document.getElementById('btn-signup')
+        btn.onclick = function(){
+             const user = document.getElementById('user');
+             const flname = document.getElementById('flname');
+             const email = document.getElementById('email');
+             const password = document.getElementById('password');
+             const password2 = document.getElementById('password2');
+             const phone = document.getElementById('phone');
+             const phone_check = document.getElementById('phone').value;
+             const regex = /!@#$%^&*(),.?":{}|<>]/;
+            const adress = document.getElementById('adress')
+                var flag = false;
+                if((flname.value.length>=8)
+                &&(flname.value.length<=50)
+                &&(user.value.length>=5)
+                &&(user.value.length<=20)
+                &&(password.value.length>=6)
+                &&(password.value.length<=20)
+                &&(password.value==password2.value)
+                &&(adress.value.length<=100)
+                &&(!regex.test(phone_check)&&(phone_check.charAt(1)==3||phone_check.charAt(1)==9)&&(phone_check.charAt(0)==0)&&(phone_check.length==10))
+                )
+                {flag=true};
+                if(flag==true){
+                    user_data= user.value;
+                    localStorage.setItem("user",user_data);
+                    email_data= email.value;
+                    localStorage.setItem("email",email_data);
+                    flname_data = flname.value;
+                    localStorage.setItem("flname",flname_data );
+                    phone_data= phone.value;
+                    localStorage.setItem("phone",phone_data);
+                    adress_data= adress.value;
+                    localStorage.setItem("adress",adress_data);
+                    password_data = password.value;
+                    localStorage.setItem("password",password_data);
+                    alert('Đăng ký thành công hệ thống sẽ đưa bạn đến trang đăng nhập ')
+                    window.open('http://127.0.0.1:5500/index.html')
+                }
+                else  {alert("Đăng ký không thành công xin vui lòng thử lại ");};
+            }
+            // ẩn hiên mật khẩu input
+      var password = document.getElementById('password');
+      
+      var icon= document.getElementById('icon');
+      icon.addEventListener("click",function(){
+        if (password.type === 'password')
+         {
+              password.type = 'text';
+              
+  } else {
+              password.type = 'password';
+             
+  }
+      })
+     var password2 = document.getElementById('password2');
+      var icon1= document.getElementById('icon1');
+      icon1.addEventListener("click",function(){
+        if (password2.type === 'password')
+         {
+              password2.type = 'text';
+              
+  } else {
+              password2.type = 'password';
+             
+  }
+      })
+            </script>
+</body>
+</html>
